@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import './App.css';
 import { fetchRestaurants } from '../../utilities';
-import RestaurantContext from '../../context/restaurantContext'
+import RestaurantContext from '../../context/restaurantContext';
+import RestaurantsTable from '../RestaurantsTable'
 
 function App() {
 
@@ -9,22 +10,23 @@ function App() {
 
   const auth = "Api-Key " + process.env.REACT_APP_AUTH
 
-  console.log(auth)
-
   useEffect(() => {
     fetchRestaurants(auth, setRestaurants)
   }, [auth])
 
-  console.log(restaurants)
+  const tableHeadings = ["Name", "City", "State", "Phone Number", "Genres"]
+
 
   return (
-    <RestaurantContext.Provider value={
-      restaurants
+    <RestaurantContext.Provider value={{
+        restaurants,
+        tableHeadings
+      }
     }>
       <div className="App">
         <header className="App-header">
-
           <p>Hello</p>
+          <RestaurantsTable />
         </header>
       </div>
     </RestaurantContext.Provider>
