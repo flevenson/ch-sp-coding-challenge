@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import { fetchRestaurants } from './utilities';
-import RestaurantContext from './context/restaurantContext'
+import { fetchRestaurants } from '../../utilities';
+import RestaurantContext from '../../context/restaurantContext'
 
 function App() {
 
