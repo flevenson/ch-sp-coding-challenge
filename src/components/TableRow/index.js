@@ -12,8 +12,6 @@ function TableRow (props) {
         return dataKeys.map(dataKey => <td key={dataKey}>{ restaurant[dataKey] }</td>) 
     })
 
-    console.log(restaurant)
-
     return (
         <tr key={restaurant.id}>
             { makeData(rowKeys) }
