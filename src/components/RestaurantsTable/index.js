@@ -4,7 +4,7 @@ import TableRow from '../TableRow'
 
 function RestaurantsTable () {
 
-    const { displayedRestaurants, tableHeadings } = useContext( RestaurantContext )
+    const { restaurants, tableHeadings } = useContext( RestaurantContext )
 
     const makeHeadings = (headingsArray) => {
         return headingsArray.map(heading => <th key={heading} >{heading}</th>)
@@ -14,7 +14,7 @@ function RestaurantsTable () {
         return dataArray.map(restaurant => <TableRow key={restaurant.id} restaurant={restaurant}/>)
     }
 
-    const sortedRestaurants = displayedRestaurants.sort((a, b) => (a.name > b.name) ? 1 : -1)
+    const sortedRestaurants = restaurants.sort((a, b) => (a.name > b.name) ? 1 : -1)
 
     return (
         <table>

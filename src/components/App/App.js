@@ -8,11 +8,7 @@ import FilterControls from '../FilterControls';
 function App() {
 
   const [restaurants, setRestaurants] = useState([])
-  const [stateFilter, setStateFilter] = useState("")
-  const [genreFilter, setGenreFilter] = useState("")
-  const [search, setSearch] = useState("")
   const [genres, setGenres] = useState([])
-  const [displayedRestaurants, setDisplayedRestaurants] = useState([restaurants])
 
   const auth = "Api-Key " + process.env.REACT_APP_AUTH
 
@@ -40,50 +36,11 @@ function App() {
 
   const rowKeys = ["name", "city", "state", "telephone", "genre"]
 
-  const addStateFilter = (stateName) => {
-    setStateFilter(stateName)
-  }
-
-  const removeStateFilter = () => {
-    setStateFilter("")
-  }
-
-  const addGenreFilter = (genreName) => {
-    setGenreFilter(genreName)
-    console.log(genreFilter)
-  }
-
-  const removeGenreFilter = () => {
-    setGenreFilter("")
-  }
-
-  const addSearch = (searchTerm) => {
-    setSearch(searchTerm)
-  }
-
-  const removeSearch = () => {
-    setSearch("")
-  }
-
-  const filterRestaurants = () => {
-
-  }
-
   return (
     <RestaurantContext.Provider value={{
-        displayedRestaurants,
-        setDisplayedRestaurants,
         tableHeadings,
         rowKeys,
-        addStateFilter,
-        removeStateFilter,
-        addGenreFilter,
-        removeGenreFilter,
-        addSearch,
-        removeSearch,
-        stateFilter,
-        genreFilter,
-        search,
+        restaurants,
         genres
       }
     }>
