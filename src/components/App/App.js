@@ -16,11 +16,13 @@ function App() {
 
   const tableHeadings = ["Name", "City", "State", "Phone Number", "Genres"]
 
+  const rowKeys = ["name", "city", "state", "telephone", "genre"]
 
   return (
     <RestaurantContext.Provider value={{
         restaurants,
-        tableHeadings
+        tableHeadings,
+        rowKeys
       }
     }>
       <div className="App">

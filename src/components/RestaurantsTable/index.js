@@ -6,25 +6,25 @@ function RestaurantsTable () {
 
     const { restaurants, tableHeadings } = useContext( RestaurantContext )
 
-    console.log(restaurants)
-
     const makeHeadings = (headingsArray) => {
-        return headingsArray.map(heading => <th>{heading}</th>)
+        return headingsArray.map(heading => <th key={heading} >{heading}</th>)
     }
 
     const makeRows = (dataArray) => {
-            return dataArray.map(object => <TableRow object />)
+    return dataArray.map(restaurant => <TableRow key={restaurant.id} restaurant={restaurant}/>)
     }
 
-    
+    const sortedRestaurants = restaurants.sort((a, b) => (a.name > b.name) ? 1 : -1)
 
     return (
         <table>
             <thead>
-                { makeHeadings(tableHeadings) }
+                <tr>
+                    { makeHeadings(tableHeadings) }
+                </tr>
             </thead>
             <tbody>
-                { makeRows(restaurants) }
+                { makeRows(sortedRestaurants) }
             </tbody>
         </table>
     )
