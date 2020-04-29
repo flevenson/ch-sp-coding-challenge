@@ -12,7 +12,8 @@ function App() {
   const [genreFilter, setGenreFilter] = useState("All")
   const [stateFilter, setStateFilter] = useState("All")
   const [search, setSearch] = useState("")
-
+  const [filtersActive, setFiltersActive] = useState(true)
+  const [page, setPage] = useState(1)
 
   const auth = "Api-Key " + process.env.REACT_APP_AUTH
 
@@ -53,6 +54,10 @@ function App() {
         search,
         setSearch,
         setRestaurants,
+        filtersActive,
+        setFiltersActive,
+        page,
+        setPage
       }
     }>
       <div className="App">
