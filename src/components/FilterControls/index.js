@@ -20,6 +20,13 @@ function FilterControls () {
         setSearch(searchTerm)
     }
 
+    const handleChange = (e) => {
+        const searchTerm = e.target.value
+        if(searchTerm === ""){
+            setSearch("")
+        }
+    }
+
     return (
         <form>
             <label htmlFor="State">Filter By State</label>
@@ -28,13 +35,14 @@ function FilterControls () {
                 {makeOptions(stateCodes)}
             </select>
             <label htmlFor="Genre">Filter By Type of Restaurant</label>
-            <select className="genre-select" name="Genre" onChange={e => setGenreFilter(e.target.value)}>
+            <select className="genre-select" name="Genre" onKeyDown={e => setGenreFilter(e.target.value)}>
                 <option>All</option>
                 {makeOptions(genres)}
             </select>
+            
             <label htmlFor="Search">Search by Name, City, or Type</label>
-            <input className='search' placeholder="Search" name="Search"/>
-            <button className='search-button' onClick={searchSubmit}>Submit</button>
+            <input className='search' placeholder="Search" name="Search" onChange={handleChange}/>
+            <button className='search-button' onClick={searchSubmit} >Submit</button>
         </form>
     )
 }

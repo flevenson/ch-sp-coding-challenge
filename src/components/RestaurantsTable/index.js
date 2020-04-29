@@ -39,6 +39,11 @@ function RestaurantsTable () {
         }))
     }, [genreFilter, stateFilter, search, restaurants])
 
+    const checkForRestaurants = () => {
+        const trueRestaurants = filteredRestaurants.filter(restaurant => restaurant.display)
+        return trueRestaurants.length
+    }
+
     return (
         <table>
             <thead>
@@ -47,7 +52,11 @@ function RestaurantsTable () {
                 </tr>
             </thead>
             <tbody>
-                { makeRows(filteredRestaurants) }
+                { 
+                    checkForRestaurants() 
+                    ? makeRows(filteredRestaurants) 
+                    : <p>No Matching restaurants</p>
+                }
             </tbody>
         </table>
     )
