@@ -1,10 +1,10 @@
 import RestaurantContext from '../../context/restaurantContext';
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import TableRow from '../TableRow'
 
 function RestaurantsTable () {
 
-    const { restaurants, tableHeadings } = useContext( RestaurantContext )
+    const { restaurants, tableHeadings, genreFilter, stateFilter, search } = useContext( RestaurantContext )
 
     const makeHeadings = (headingsArray) => {
         return headingsArray.map(heading => <th key={heading} >{heading}</th>)
@@ -14,8 +14,6 @@ function RestaurantsTable () {
         return dataArray.map(restaurant => <TableRow key={restaurant.id} restaurant={restaurant}/>)
     }
 
-    const sortedRestaurants = restaurants.sort((a, b) => (a.name > b.name) ? 1 : -1)
-
     return (
         <table>
             <thead>
@@ -24,7 +22,7 @@ function RestaurantsTable () {
                 </tr>
             </thead>
             <tbody>
-                { makeRows(sortedRestaurants) }
+                { makeRows(restaurants) }
             </tbody>
         </table>
     )
