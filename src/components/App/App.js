@@ -9,8 +9,8 @@ function App() {
 
   const [restaurants, setRestaurants] = useState([])
   const [genres, setGenres] = useState([])
-  const [genreFilter, setGenreFilter] = useState("")
-  const [stateFilter, setStateFilter] = useState("")
+  const [genreFilter, setGenreFilter] = useState("All")
+  const [stateFilter, setStateFilter] = useState("All")
   const [search, setSearch] = useState("")
 
 
@@ -31,7 +31,7 @@ function App() {
     setGenres(genresNoDupes)
   }
 
-  useEffect(() => {
+  useEffect( () => {
     fetchRestaurants(auth, setRestaurants)
     makeGenresList(restaurants)
   }, [restaurants])
@@ -51,7 +51,8 @@ function App() {
         stateFilter,
         setStateFilter,
         search,
-        setSearch
+        setSearch,
+        setRestaurants,
       }
     }>
       <div className="App">
