@@ -22,8 +22,9 @@ export const fetchRestaurants = (apiKey, setRestaurants, setIsLoading) => {
 export const cleanRestaurants = (restaurants) => {
   
   const displayRestaurants = restaurants.map(restaurant => {
-    let genresAsArray = restaurant.genre.split(",")
-    restaurant.genre = genresAsArray
+    const genresAsArray = restaurant.genre.split(",")
+    const sortedGenres = genresAsArray.sort((a, b) => (a > b) ? 1 : -1)
+    restaurant.genre = sortedGenres
     return {...restaurant, display: true}
   })
   const sortedRestaurants = displayRestaurants.sort((a, b) => (a.name > b.name) ? 1 : -1)

@@ -31,8 +31,9 @@ function App() {
         }
       }
     })
+    const sortedGenres = genresNoDupes.sort((a, b) => (a > b) ? 1 : -1)
 
-    setGenres(genresNoDupes)
+    setGenres(sortedGenres)
   }
 
   useEffect( () => {

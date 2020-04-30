@@ -13,6 +13,7 @@ function TableRow (props) {
             if(typeof(restaurant[dataKey]) === "string"){
                 return <td key={dataKey}>{ restaurant[dataKey]}</td>
             } else if(typeof(restaurant[dataKey] === "object")) {
+                
                 return <td key={dataKey}>{ restaurant[dataKey].join(", ")}</td>
             } 
         })
