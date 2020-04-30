@@ -22,12 +22,12 @@ function App() {
 
   const makeGenresList = (restaurants) => {
     let genresNoDupes = []
-    let genresArray = restaurants.map(restaurant => restaurant.genre)
-    let genresAsArray = genresArray.map(genreString => genreString.split(","))
-    genresAsArray.forEach(genresList => {
-      for(let i = 0; i < genresList.length; i++) {
-        if(!genresNoDupes.includes(genresList[i])){
-          genresNoDupes.push(genresList[i])
+    // let genresArray = restaurants.map(restaurant => restaurant.genre)
+    // let genresAsArray = genresArray.map(genreString => genreString.split(","))
+    restaurants.forEach(restaurant => {
+      for(let i = 0; i < restaurant.genre.length; i++) {
+        if(!genresNoDupes.includes(restaurant.genre[i])){
+          genresNoDupes.push(restaurant.genre[i])
         }
       }
     })
