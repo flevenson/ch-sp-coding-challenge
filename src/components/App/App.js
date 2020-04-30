@@ -9,6 +9,11 @@ function App() {
 
   const [restaurants, setRestaurants] = useState([])
   const [genres, setGenres] = useState([])
+  const [genreFilter, setGenreFilter] = useState("All")
+  const [stateFilter, setStateFilter] = useState("All")
+  const [search, setSearch] = useState("")
+  const [filtersActive, setFiltersActive] = useState(true)
+  const [page, setPage] = useState(1)
 
   const auth = "Api-Key " + process.env.REACT_APP_AUTH
 
@@ -27,10 +32,10 @@ function App() {
     setGenres(genresNoDupes)
   }
 
-  useEffect(() => {
+  useEffect( () => {
     fetchRestaurants(auth, setRestaurants)
     makeGenresList(restaurants)
-  }, [auth, restaurants])
+  }, [restaurants])
 
   const tableHeadings = ["Name", "City", "State", "Phone Number", "Genres"]
 
@@ -41,7 +46,18 @@ function App() {
         tableHeadings,
         rowKeys,
         restaurants,
-        genres
+        genres,
+        genreFilter,
+        setGenreFilter,
+        stateFilter,
+        setStateFilter,
+        search,
+        setSearch,
+        setRestaurants,
+        filtersActive,
+        setFiltersActive,
+        page,
+        setPage
       }
     }>
       <div className="App">
