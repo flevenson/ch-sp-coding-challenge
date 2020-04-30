@@ -17,7 +17,7 @@ function App() {
   const [isLoading, setIsLoading] = useState(true)
 
   const auth = "Api-Key " + process.env.REACT_APP_AUTH
-  const tableHeadings = ["Name", "City", "State", "Phone Number", "Genres"]
+  const tableHeadings = ["Name", "City", "State", "Phone Number", "Restaurant Type"]
   const rowKeys = ["name", "city", "state", "telephone", "genre"]
 
   const makeGenresList = (restaurants) => {

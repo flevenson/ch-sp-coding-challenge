@@ -38,9 +38,8 @@ function RestaurantsTable () {
         const numPages = totalRestaurants.length / 10
         let pageButtons = []
         for(let i = 0; i < numPages; i++) {
-            pageButtons.push(<button key={i + 1} className={`page-button`} onClick={(e) => handlePageChange(e)}>{i + 1}</button>)
+            pageButtons.push(<button key={i + 1}  onClick={(e) => handlePageChange(e)}>{i + 1}</button>)
         }
-
         return pageButtons
     }
 
@@ -62,7 +61,6 @@ function RestaurantsTable () {
             }
             return restaurant
         }))
-
 
     }, [genreFilter, stateFilter, search, restaurants, filtersActive, page])
 
@@ -88,7 +86,8 @@ function RestaurantsTable () {
                 </table>
                 : <h1>No Restaurants Matching Filters</h1>
             }
-            {makePageButtons()}
+            <p>Pages</p>
+            { makePageButtons() }
         </div>
     )
 }
