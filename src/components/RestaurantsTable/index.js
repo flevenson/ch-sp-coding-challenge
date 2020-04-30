@@ -1,6 +1,7 @@
 import RestaurantContext from '../../context/restaurantContext';
 import React, { useContext, useState, useEffect } from 'react';
-import TableRow from '../TableRow'
+import TableRow from '../TableRow';
+import './restaurantsTable.css';
 
 function RestaurantsTable () {
 
@@ -12,7 +13,18 @@ function RestaurantsTable () {
         return headingsArray.map(heading => <th key={heading} >{heading}</th>)
     }
 
+    // const toggleActivePageButton = (e) => {
+    //     const pageButtons = document.querySelectorAll(`.page-button`)
+    //     pageButtons.forEach(pageButton => {
+    //         pageButton.classList.remove("active")
+    //     })
+    //     pageButtons[(e.target.innerText - 1)].classList.toggle("active")
+    // }
 
+    const handlePageChange = (e) => {
+        setPage(e.target.innerText)
+        // toggleActivePageButton(e)
+    }
 
     const makeRows = () => {
 
@@ -25,22 +37,20 @@ function RestaurantsTable () {
         const restaurantIndex = displayRestaurants.indexOf(restaurant)
       if(restaurantIndex <= pageEnd && restaurantIndex >= pageStart) {
           return restaurant
-      }
+      } 
     })
         
-    return rowsOnPage.map(restaurant => {
-        
-            return <TableRow key={restaurant.id} restaurant={restaurant}/>}
-        )
+    return rowsOnPage.map(restaurant => <TableRow key={restaurant.id} restaurant={restaurant}/> )
     }
 
     const makePageButtons = () => {
-        const displayedRestaurants = filteredRestaurants.filter(restaurant => restaurant.display === true) 
-        const numPages = displayedRestaurants.length / 10
+        const totalRestaurants = filteredRestaurants.filter(restaurant => restaurant.display === true) 
+        const numPages = totalRestaurants.length / 10
         let pageButtons = []
         for(let i = 0; i < numPages; i++) {
-            pageButtons.push(<button onClick={(e) => setPage(e.target.innerText)}>{i + 1}</button>)
+            pageButtons.push(<button className={`page-button`} onClick={(e) => handlePageChange(e)}>{i + 1}</button>)
         }
+
         return pageButtons
     }
 
@@ -63,7 +73,8 @@ function RestaurantsTable () {
             return restaurant
         }))
 
-    }, [genreFilter, stateFilter, search, restaurants, filtersActive])
+
+    }, [genreFilter, stateFilter, search, restaurants, filtersActive, page])
 
     const checkForRestaurants = () => {
         const trueRestaurants = filteredRestaurants.filter(restaurant => restaurant.display)
