@@ -14,6 +14,7 @@ function App() {
   const [search, setSearch] = useState("")
   const [filtersActive, setFiltersActive] = useState(true)
   const [page, setPage] = useState(1)
+  const [isLoading, setIsLoading] = useState(true)
 
   const auth = "Api-Key " + process.env.REACT_APP_AUTH
 
@@ -33,7 +34,7 @@ function App() {
   }
 
   useEffect( () => {
-    fetchRestaurants(auth, setRestaurants)
+    fetchRestaurants(auth, setRestaurants, setIsLoading)
     makeGenresList(restaurants)
   }, [restaurants])
 
@@ -69,7 +70,10 @@ function App() {
             <FilterControls />
           </section>
           <section>
-            <RestaurantsTable />
+            { isLoading
+              ? <h1>Loading Restaurants Table</h1>
+              : <RestaurantsTable />
+            }
           </section>
         </main>
       </div>

@@ -1,4 +1,5 @@
-export const fetchRestaurants = (apiKey, setRestaurants) => {
+export const fetchRestaurants = (apiKey, setRestaurants, setIsLoading) => {
+
     try {
         fetch(
           "https://code-challenge.spectrumtoolbox.com/api/restaurants", {
@@ -10,6 +11,7 @@ export const fetchRestaurants = (apiKey, setRestaurants) => {
         .then(response => response.json())
         .then(results => {
           const cleanedRestaurants = cleanRestaurants(results)
+          setIsLoading(false)
           setRestaurants(cleanedRestaurants)})
         .catch(err => console.log(err))
       } catch (error){
