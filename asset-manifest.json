@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "/ch-sp-coding-challenge/static/css/main.32925c20.chunk.css",
-    "main.js": "/ch-sp-coding-challenge/static/js/main.4463c833.chunk.js",
-    "main.js.map": "/ch-sp-coding-challenge/static/js/main.4463c833.chunk.js.map",
+    "main.css": "/ch-sp-coding-challenge/static/css/main.0b1b1bf5.chunk.css",
+    "main.js": "/ch-sp-coding-challenge/static/js/main.a85a412d.chunk.js",
+    "main.js.map": "/ch-sp-coding-challenge/static/js/main.a85a412d.chunk.js.map",
     "runtime-main.js": "/ch-sp-coding-challenge/static/js/runtime-main.f0916315.js",
     "runtime-main.js.map": "/ch-sp-coding-challenge/static/js/runtime-main.f0916315.js.map",
     "static/js/2.bb259421.chunk.js": "/ch-sp-coding-challenge/static/js/2.bb259421.chunk.js",
     "static/js/2.bb259421.chunk.js.map": "/ch-sp-coding-challenge/static/js/2.bb259421.chunk.js.map",
     "index.html": "/ch-sp-coding-challenge/index.html",
-    "precache-manifest.d28937c88bf84a0d3aaef3fb6992eb6c.js": "/ch-sp-coding-challenge/precache-manifest.d28937c88bf84a0d3aaef3fb6992eb6c.js",
+    "precache-manifest.256b3e3438babac001b090fcb1d6e023.js": "/ch-sp-coding-challenge/precache-manifest.256b3e3438babac001b090fcb1d6e023.js",
     "service-worker.js": "/ch-sp-coding-challenge/service-worker.js",
-    "static/css/main.32925c20.chunk.css.map": "/ch-sp-coding-challenge/static/css/main.32925c20.chunk.css.map",
+    "static/css/main.0b1b1bf5.chunk.css.map": "/ch-sp-coding-challenge/static/css/main.0b1b1bf5.chunk.css.map",
     "static/js/2.bb259421.chunk.js.LICENSE.txt": "/ch-sp-coding-challenge/static/js/2.bb259421.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.f0916315.js",
     "static/js/2.bb259421.chunk.js",
-    "static/css/main.32925c20.chunk.css",
-    "static/js/main.4463c833.chunk.js"
+    "static/css/main.0b1b1bf5.chunk.css",
+    "static/js/main.a85a412d.chunk.js"
   ]
 }
