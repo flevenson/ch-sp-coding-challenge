@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import RestaurantContext from '../../context/restaurantContext';
+import './filterControls.css'
 
 function FilterControls () {
 
@@ -40,30 +41,36 @@ function FilterControls () {
     }
 
     const chooseGenre = (e) => {
-        setGenreFilter(e.targetValue)
+        setGenreFilter(e.target.value)
         setPage(1)
     }
 
     return (
         <form>
-            <label htmlFor="State">Filter By State</label>
-            <select className="state-select" name="State" onChange={e => chooseState(e)}>
-                <option>All</option>
-                {makeOptions(stateCodes)}
-            </select>
-            <label htmlFor="Genre">Filter By Type of Restaurant</label>
-            <select className="genre-select" name="Genre" onChange={e => chooseGenre(e)}>
-                <option>All</option>
-                {makeOptions(genres)}
-            </select>
-            <label htmlFor="Search">Search by Name, City, or Type</label>
-            <input className='search' placeholder="Search" name="Search" onChange={handleChange}/>
-            <button className='search-button' onClick={searchSubmit} >Submit</button>
-            <button onClick={toggleFiltersActive}>{
-                filtersActive
-                ? "Remove Filters"
-                : "Add Filters"
-            }</button>
+            <div>
+                <label htmlFor="State">Filter By State</label>
+                <select className="state-select" name="State" onChange={chooseState} >
+                    <option>All</option>
+                    {makeOptions(stateCodes)}
+                </select>
+            </div>
+            <div>
+                <label htmlFor="Genre">Filter By Type of Restaurant</label>
+                <select className="genre-select" name="Genre" onChange={chooseGenre} >
+                    <option>All</option>
+                    {makeOptions(genres)}
+                </select>
+            </div>
+            <div>
+                <label htmlFor="Search">Search by Name, City, or Type</label>
+                <input className='search' placeholder="Search" name="Search" onChange={handleChange}/>
+                <button className='search-button' onClick={searchSubmit} >Submit</button>
+                <button onClick={toggleFiltersActive}>{
+                    filtersActive
+                    ? "Remove Filters"
+                    : "Add Filters"
+                }</button>
+            </div>
         </form>
     )
 }

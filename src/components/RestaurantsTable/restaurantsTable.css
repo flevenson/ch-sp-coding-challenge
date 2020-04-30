@@ -1,7 +1,22 @@
-.active {
-    background-color: red;
+table {
+    width: 95vw;
+    margin-bottom: 20px;
 }
 
-.inactive-page {
-    background-color: blue;
+thead {
+    font-family : 'Source Sans Pro', sans-serif;
+    font-weight: 700;
+}
+
+tbody {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: 400;
+}
+
+th, td {
+    outline: .1px solid #068BBF;
+    height: 40px;
+    font-size: 1.2rem;
+    background-color: #DAEAB3;
+    color: #49A6A6;
 }
