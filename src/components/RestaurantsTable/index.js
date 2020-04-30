@@ -13,34 +13,24 @@ function RestaurantsTable () {
         return headingsArray.map(heading => <th key={heading} >{heading}</th>)
     }
 
-    // const toggleActivePageButton = (e) => {
-    //     const pageButtons = document.querySelectorAll(`.page-button`)
-    //     pageButtons.forEach(pageButton => {
-    //         pageButton.classList.remove("active")
-    //     })
-    //     pageButtons[(e.target.innerText - 1)].classList.toggle("active")
-    // }
-
     const handlePageChange = (e) => {
         setPage(e.target.innerText)
-        // toggleActivePageButton(e)
     }
 
     const makeRows = () => {
+        let pageStart = page * 10 - 10
+        let pageEnd = page * 10 - 1
 
-    let pageStart = page * 10 - 10
-    let pageEnd = page * 10 - 1
+        let displayRestaurants = filteredRestaurants.filter(restaurant => restaurant.display === true)
 
-    let displayRestaurants = filteredRestaurants.filter(restaurant => restaurant.display === true)
-
-    let rowsOnPage = displayRestaurants.filter(restaurant => {
-        const restaurantIndex = displayRestaurants.indexOf(restaurant)
-      if(restaurantIndex <= pageEnd && restaurantIndex >= pageStart) {
-          return restaurant
-      } 
-    })
+        let restaurantsOnPage = displayRestaurants.filter(restaurant => {
+            const restaurantIndex = displayRestaurants.indexOf(restaurant)
+            if(restaurantIndex <= pageEnd && restaurantIndex >= pageStart) {
+                return restaurant
+            } 
+        })
         
-    return rowsOnPage.map(restaurant => <TableRow key={restaurant.id} restaurant={restaurant}/> )
+        return restaurantsOnPage.map(restaurant => <TableRow key={restaurant.id} restaurant={restaurant}/> )
     }
 
     const makePageButtons = () => {
@@ -48,9 +38,8 @@ function RestaurantsTable () {
         const numPages = totalRestaurants.length / 10
         let pageButtons = []
         for(let i = 0; i < numPages; i++) {
-            pageButtons.push(<button className={`page-button`} onClick={(e) => handlePageChange(e)}>{i + 1}</button>)
+            pageButtons.push(<button key={i + 1}  onClick={(e) => handlePageChange(e)}>{i + 1}</button>)
         }
-
         return pageButtons
     }
 
@@ -73,7 +62,6 @@ function RestaurantsTable () {
             return restaurant
         }))
 
-
     }, [genreFilter, stateFilter, search, restaurants, filtersActive, page])
 
     const checkForRestaurants = () => {
@@ -83,21 +71,23 @@ function RestaurantsTable () {
 
     return (
         <div>
-            <table>
-                <thead>
-                    <tr>
-                        { makeHeadings(tableHeadings) }
-                    </tr>
-                </thead>
-                <tbody>
-                    { 
-                        checkForRestaurants() 
-                        ? makeRows() 
-                        : <p>No Matching restaurants</p>
-                    }
-                </tbody>
-            </table>
-            {makePageButtons()}
+            {
+                checkForRestaurants() 
+                ?
+                <table>
+                    <thead>
+                        <tr>
+                            { makeHeadings(tableHeadings) }
+                        </tr>
+                    </thead>
+                    <tbody>
+                       { makeRows() }
+                    </tbody>
+                </table>
+                : <h1>No Restaurants Matching Filters</h1>
+            }
+            <p>Pages</p>
+            { makePageButtons() }
         </div>
     )
 }

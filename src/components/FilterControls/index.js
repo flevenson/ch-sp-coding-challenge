@@ -48,14 +48,14 @@ function FilterControls () {
     return (
         <form>
             <div>
-                <label htmlFor="State">Filter By State</label>
+                <label htmlFor="State">State</label>
                 <select className="state-select" name="State" onChange={chooseState} >
                     <option>All</option>
                     {makeOptions(stateCodes)}
                 </select>
             </div>
             <div>
-                <label htmlFor="Genre">Filter By Type of Restaurant</label>
+                <label htmlFor="Genre">Restaurant Type</label>
                 <select className="genre-select" name="Genre" onChange={chooseGenre} >
                     <option>All</option>
                     {makeOptions(genres)}

@@ -9,7 +9,14 @@ function TableRow (props) {
     const { restaurant } = props;
 
     const makeData = (dataKeys => {
-        return dataKeys.map(dataKey => <td key={dataKey}>{ restaurant[dataKey] }</td>) 
+        return dataKeys.map(dataKey => {
+            if(typeof(restaurant[dataKey]) === "string"){
+                return <td key={dataKey}>{ restaurant[dataKey]}</td>
+            } else if(typeof(restaurant[dataKey] === "object")) {
+                
+                return <td key={dataKey}>{ restaurant[dataKey].join(", ")}</td>
+            } 
+        })
     })
 
     return (

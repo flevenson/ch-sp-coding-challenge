@@ -14,32 +14,31 @@ function App() {
   const [search, setSearch] = useState("")
   const [filtersActive, setFiltersActive] = useState(true)
   const [page, setPage] = useState(1)
+  const [isLoading, setIsLoading] = useState(true)
 
   const auth = "Api-Key " + process.env.REACT_APP_AUTH
+  const tableHeadings = ["Name", "City", "State", "Phone Number", "Restaurant Type"]
+  const rowKeys = ["name", "city", "state", "telephone", "genre"]
 
   const makeGenresList = (restaurants) => {
     let genresNoDupes = []
-    let genresArray = restaurants.map(restaurant => restaurant.genre)
-    let genresAsArray = genresArray.map(genreString => genreString.split(","))
-    genresAsArray.forEach(genresList => {
-      for(let i = 0; i < genresList.length; i++) {
-        if(!genresNoDupes.includes(genresList[i])){
-          genresNoDupes.push(genresList[i])
+    restaurants.forEach(restaurant => {
+      for(let i = 0; i < restaurant.genre.length; i++) {
+        if(!genresNoDupes.includes(restaurant.genre[i])){
+          genresNoDupes.push(restaurant.genre[i])
         }
       }
     })
+    const sortedGenres = genresNoDupes.sort((a, b) => (a > b) ? 1 : -1)
 
-    setGenres(genresNoDupes)
+    setGenres(sortedGenres)
   }
 
   useEffect( () => {
-    fetchRestaurants(auth, setRestaurants)
+    fetchRestaurants(auth, setRestaurants, setIsLoading)
     makeGenresList(restaurants)
   }, [restaurants])
 
-  const tableHeadings = ["Name", "City", "State", "Phone Number", "Genres"]
-
-  const rowKeys = ["name", "city", "state", "telephone", "genre"]
 
   return (
     <RestaurantContext.Provider value={{
@@ -69,7 +68,10 @@ function App() {
             <FilterControls />
           </section>
           <section>
-            <RestaurantsTable />
+            { isLoading
+              ? <h1>Loading Restaurants Table</h1>
+              : <RestaurantsTable />
+            }
           </section>
         </main>
       </div>
