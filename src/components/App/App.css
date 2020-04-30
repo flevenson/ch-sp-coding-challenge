@@ -6,6 +6,7 @@ h1 {
   font-family: 'Titan One', cursive;
   font-size: 3rem;
   color: #F2ADA7;
+  -webkit-text-stroke: .5px #068BBF;
 }
 
 main {
