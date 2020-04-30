@@ -1,0 +1,46 @@
+form {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: 700;
+    width: 95vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+label {
+    font-size: 1rem;
+    margin-right: 20px;
+    color: #068BBF;
+}
+
+select {
+    font-size: 1rem;
+    height: 40px;
+    width: 130px;
+    border: none;
+    padding: 5px;
+}
+
+input {
+    font-size: 1rem;
+    height: 31px;
+    width: 130px;
+    border: none;
+    padding: 5px;
+}
+
+button {
+    font-size: 1rem;
+    font-weight: 700;
+    height: 40px;
+    width: 130px;
+    background-color: #068BBF;
+    border: none;
+    margin-left: 20px;
+    color: #DAEAB3;
+}
+
+button:focus, input:focus, select:focus {
+    outline: none;
+}

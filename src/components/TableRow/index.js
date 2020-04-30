@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import RestaurantContext from '../../context/restaurantContext';
-
+import './tableRow.css'
 
 function TableRow (props) {
 
