@@ -17,6 +17,8 @@ function App() {
   const [isLoading, setIsLoading] = useState(true)
 
   const auth = "Api-Key " + process.env.REACT_APP_AUTH
+  const tableHeadings = ["Name", "City", "State", "Phone Number", "Genres"]
+  const rowKeys = ["name", "city", "state", "telephone", "genre"]
 
   const makeGenresList = (restaurants) => {
     let genresNoDupes = []
@@ -38,9 +40,6 @@ function App() {
     makeGenresList(restaurants)
   }, [restaurants])
 
-  const tableHeadings = ["Name", "City", "State", "Phone Number", "Genres"]
-
-  const rowKeys = ["name", "city", "state", "telephone", "genre"]
 
   return (
     <RestaurantContext.Provider value={{
